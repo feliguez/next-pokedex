@@ -12,11 +12,6 @@ interface Props {
 export const PokemonCard: FC<Props> = ({ pokemon }) => {
   const { id, image, name } = pokemon;
 
-  // const router = useRouter();
-
-  // const handleClick = () => {
-  //   router.push(`/pokemon/${id}`);
-  // };
   return (
     <Grid xs={6} sm={4} md={3} lg={2} key={id}>
       <Card hoverable clickable css={{ w: '100%', p: 0 }}>

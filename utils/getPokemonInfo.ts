@@ -8,3 +8,6 @@ export const getPokemonInfo = async (nameOrId: string) => {
 
   return { id, name, sprites };
 };
+
+export const pokemonSvg = (id: number) =>
+  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;

@@ -6,6 +6,7 @@ import { pokeApi } from './api';
 import { MainLayout } from '../components/layout';
 import { SmallPokemon, PokemonListResponse } from '../interfaces';
 import { PokemonCard } from '../components/pokemon';
+import { pokemonSvg } from '../utils';
 
 interface Props {
   pokemons: SmallPokemon[];
@@ -30,17 +31,15 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     limit: 151,
     offset: 0,
   });
-
   const response = await fetch(`${pokeApi}/pokemon?${query}`);
+  const { results }: PokemonListResponse = await response.json();
 
-  const data: PokemonListResponse = await response.json();
-
-  const pokemons: SmallPokemon[] = data.results.map((item, index) => {
+  const pokemons: SmallPokemon[] = results.map((item, index) => {
     const id = index + 1;
     return {
       ...item,
       id,
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`,
+      image: pokemonSvg(id),
     };
   });
 

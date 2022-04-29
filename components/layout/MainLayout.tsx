@@ -1,7 +1,7 @@
-import { useTheme } from '@nextui-org/react';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { FC, ReactNode } from 'react';
+import Head from 'next/head';
+
+import { useTheme } from '@nextui-org/react';
 
 import { Navbar } from '../ui';
 

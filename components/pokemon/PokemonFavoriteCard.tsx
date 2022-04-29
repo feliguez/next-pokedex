@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import NextLink from 'next/link';
 
 import { Card, Grid, Row, Text, Link } from '@nextui-org/react';
+import { pokemonSvg } from '../../utils';
 
 interface Props {
   pokemonId: number;
@@ -12,11 +13,7 @@ export const PokemonFavoriteCard: FC<Props> = ({ pokemonId: id }) => {
     <Grid xs={6} sm={4} md={3} lg={2} xl={1} key={id}>
       <Card hoverable clickable css={{ w: '100%', p: 0 }}>
         <Card.Body css={{ p: 1 }}>
-          <Card.Image
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
-            width="100%"
-            height={200}
-          />
+          <Card.Image src={pokemonSvg(id)} width="100%" height={200} />
           <NextLink href={`/pokemon/${id}`} passHref>
             <Link
               css={{

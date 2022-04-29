@@ -1,6 +1,7 @@
-import { Grid, Image, Text } from '@nextui-org/react';
 import React from 'react';
-import { MainLayout } from '../layout';
+import { Grid, Image, Text } from '@nextui-org/react';
+
+import { pokemonSvg } from '../../utils';
 
 export const NoFavorites = () => {
   return (
@@ -12,7 +13,7 @@ export const NoFavorites = () => {
     >
       <Text h1>No hay favoritos</Text>
       <Image
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${150}.svg`}
+        src={pokemonSvg(150)}
         alt="No image"
         css={{ opacity: 0.5 }}
         height="100"
