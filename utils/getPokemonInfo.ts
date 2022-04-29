@@ -2,11 +2,15 @@ import { Pokemon } from '../interfaces';
 import { pokeApi } from '../pages/api';
 
 export const getPokemonInfo = async (nameOrId: string) => {
-  const response = await fetch(`${pokeApi}/pokemon/${nameOrId}`);
+  try {
+    const response = await fetch(`${pokeApi}/pokemon/${nameOrId}`);
 
-  const { id, name, sprites, ...rest }: Pokemon = await response.json();
+    const { id, name, sprites, ...rest }: Pokemon = await response.json();
 
-  return { id, name, sprites };
+    return { id, name, sprites };
+  } catch (error) {
+    return null;
+  }
 };
 
 export const pokemonSvg = (id: number) =>

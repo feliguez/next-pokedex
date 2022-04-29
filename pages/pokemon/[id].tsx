@@ -143,7 +143,8 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
   return {
     paths,
-    fallback: false, // 'blocking' to block access to page
+    // fallback: false, // 'blocking' to block access to page
+    fallback: 'blocking', // 'blocking' to block access to page
   };
 };
 
@@ -155,8 +156,20 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id: pokemonId } = params as { id: string };
 
+  const pokemon = await getPokemonInfo(pokemonId);
+
+  if (!pokemon) {
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      },
+    };
+  }
+
   return {
-    props: { pokemon: await getPokemonInfo(pokemonId) },
+    props: { pokemon },
+    revalidate: 86400, //60 * 60 * 24
   };
 };
 
