@@ -25,7 +25,12 @@ export const Navbar = () => {
       />
       <NextLink href="/" passHref>
         <Link>
-          <Image src={`/images/pokeapi.png`} alt="image" width={105} height={42} />
+          <Image
+            src={`/images/pokeapi.png`}
+            alt="image"
+            width={105}
+            height={42}
+          />
         </Link>
       </NextLink>
       {/* <Text color="white" h2>
@@ -36,7 +41,15 @@ export const Navbar = () => {
       </Text> */}
       <NextLink href="/favorites" passHref>
         <Link css={{ marginLeft: 'auto' }}>
-          <Text color="white">Favoritos</Text>
+          <Text
+            color="white"
+            css={{
+              textGradient: '45deg, $yellow500 -20%, $red500 100%',
+            }}
+            // weight="bold"
+          >
+            Favoritos
+          </Text>
         </Link>
       </NextLink>
     </div>

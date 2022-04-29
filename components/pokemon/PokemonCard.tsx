@@ -18,7 +18,7 @@ export const PokemonCard: FC<Props> = ({ pokemon }) => {
   //   router.push(`/pokemon/${id}`);
   // };
   return (
-    <Grid xs={6} sm={4} md={3} lg={2} xl={1} key={id}>
+    <Grid xs={6} sm={4} md={3} lg={2} key={id}>
       <Card hoverable clickable css={{ w: '100%', p: 0 }}>
         <Card.Body css={{ p: 1 }}>
           <Card.Image src={image} width="100%" height={200} />

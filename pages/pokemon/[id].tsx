@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
+import {
+  Button,
+  Card,
+  Container,
+  Grid,
+  Image,
+  Row,
+  Text,
+} from '@nextui-org/react';
 
 import confetti from 'canvas-confetti';
 
@@ -38,14 +46,36 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
       <Grid.Container css={{ marginTop: '5px' }} gap={2}>
         <Grid xs={12} sm={4}>
           <Card hoverable css={{ padding: '30px' }}>
+            <Card.Header>
+              <Row justify="center">
+                <Text
+                  h1
+                  transform="capitalize"
+                  css={{
+                    textGradient: '45deg, $blue500 -20%, $pink500 50%',
+                  }}
+                  weight="bold"
+                >
+                  {name}
+                </Text>
+              </Row>
+            </Card.Header>
             <Card.Body>
               <Card.Image
-                src={sprites.other?.dream_world.front_default || '/images/pokeapi.png'}
+                src={
+                  sprites.other?.dream_world.front_default ||
+                  '/images/pokeapi.png'
+                }
                 alt={name}
                 width={'100%'}
                 height={200}
               />
             </Card.Body>
+            <Card.Footer css={{ paddingBottom: '0' }}>
+              <Row justify="flex-end">
+                <Text>#{id}</Text>
+              </Row>
+            </Card.Footer>
           </Card>
         </Grid>
         <Grid xs={12} sm={8}>
@@ -53,16 +83,18 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
             <Card.Header
               css={{ display: 'flex', justifyContent: 'space-between' }}
             >
-              <Text h1 transform="capitalize">
-                {name}
-              </Text>
-              <Button
-                color={'gradient'}
-                ghost={!isInFavorite}
-                onClick={onToggleFavorite}
-              >
-                {isInFavorite ? 'En favoritos' : 'Guardar en favoritos'}
-              </Button>
+              <Row justify="flex-end">
+                <Button
+                  auto
+                  color={'gradient'}
+                  ghost={!isInFavorite}
+                  onClick={onToggleFavorite}
+                  rounded
+                  shadow={!isInFavorite}
+                >
+                  {isInFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+                </Button>
+              </Row>
             </Card.Header>
             <Card.Body>
               <Text h3>Sprites:</Text>
